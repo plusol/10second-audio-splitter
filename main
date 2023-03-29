@@ -1,0 +1,34 @@
+from pydub import AudioSegment
+import os
+
+# Set the input and output file paths
+input_file = "path/to/input_file.mp3"
+output_dir = "path/to/output_dir/"
+
+# Set the length of each clip in milliseconds (10 seconds = 10000 milliseconds)
+clip_length = 10000
+
+# Load the audio file using PyDub
+audio = AudioSegment.from_file(input_file)
+
+# Get the total length of the audio file in milliseconds
+total_length = len(audio)
+
+# Iterate over the audio file, creating a new clip for each 10-second segment
+for i in range(0, total_length, clip_length):
+    # Get the start and end time of the current clip
+    start_time = i
+    end_time = min(i + clip_length, total_length)
+
+    # Extract the current clip from the audio file
+    clip = audio[start_time:end_time]
+
+    # Set the output file path for the current clip
+    output_file = os.path.join(output_dir, f"clip_{i//clip_length}.mp3")
+
+    # Create the output directory if it doesn't exist
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    # Export the current clip to the output file path
+    clip.export(output_file, format="mp3")
