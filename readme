@@ -1,3 +1,7 @@
 pip install pydub using the command prompt to make this work
 
-if you're running into issues try replacing the \ with /
+if you're running into issues try replacing the \ with / in the input_file and output_dir
+
+an example would be
+input_file = "C:/Users/yourname/Music/youraudio.mp3"
+output_dir = "C:/Users/yourname/Music/splitfolder/namethissomething.mp3"
