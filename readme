@@ -1,1 +1,3 @@
 pip install pydub using the command prompt to make this work
+
+if you're running into issues try replacing the \ with /
